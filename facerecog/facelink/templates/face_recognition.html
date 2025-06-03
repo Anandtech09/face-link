@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html><head>
+ <title>Face Recognition</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest"></script>
+    <style>
+        h1{
+            text-align: center;
+            font-size: 60px;
+            color: brown;
+        }
+        video{
+            border: solid black;
+            margin-left: 20%;
+        }
+        canvas{
+            border:solid blue;
+            height: 300px;
+            width: 300px;
+        }
+        #capture-button{
+            padding:1%;
+            color:green;
+            background-color: aqua;
+            border-color: solid black;
+        }
+        #submit-button{
+            padding:1%;
+            margin-left: 43%;
+            margin-top: 1%;
+        } 
+        body{
+            background: linear-gradient(to right ,rgb(10, 190, 214),rgb(158, 211, 34));
+        }
+        a{
+            text-decoration: none;
+        }
+        #but{
+            margin-left: 43%;
+            margin-top: 3%;
+            padding: 1%;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+<body>
+    <h1>Face Recognition</h1>
+    <div id="webcam-container"></div>
+    <video id="video" width="300" height="300" autoplay></video>
+    <button id="capture-button">Capture</button>
+    <canvas id="output-canvas"></canvas>
+
+    <form id="face-recognition-form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="hidden" id="image-data" name="image-data">
+        <button id="submit-button" disabled>Submit</button>
+    </form>
+    <button id="but"> <a href="/">Main Page</a></button>
+    <script>
+        // Set up the webcam and model
+        const video = document.getElementById('video')
+        let stream
+        navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
+            .then(function (stream) {
+                video.srcObject = stream
+                webcam = new tmImage.Webcam(200, 200, video)
+                webcam.setup()
+                webcam.play()
+            })
+            .catch(function (error) {
+                console.log("Error accessing media devices.", error)
+            })
+
+        const canvasElement = document.getElementById('output-canvas')
+        const canvas = document.getElementById('output-canvas')
+        const ctx = canvas.getContext('2d')
+
+        // Take a photo when the capture button is clicked
+        document.getElementById('capture-button').addEventListener('click', async () => {
+            ctx.drawImage(video, 0, 0, 300, 150)
+            document.getElementById('submit-button').disabled = false
+        })
+
+        // Submit the photo when the submit button is clicked
+        document.getElementById('submit-button').addEventListener('click', () => {
+            const imageData = canvas.toDataURL('image/jpeg')
+            document.getElementById('image-data').value = imageData
+            document.getElementById('face-recognition-form').submit()
+        })
+    </script>
+</body>
+</html>

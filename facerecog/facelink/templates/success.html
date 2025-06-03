@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Success</title>
+    <style>
+        h1{
+            font-size: 30px;
+            color:green;
+            font-family: monospace;
+        }
+        p{
+            font-size: 40px;
+            text-transform: capitalize;
+        }
+        a{
+            text-decoration: none;
+            border: solid green;
+        }
+        img{
+            height: 200px;
+            width: 2o0px;
+            border-radius: 5%;
+            float: right;
+            margin-right: 120px;
+            border: solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Success!</h1>
+    <p>Your attendance has been marked.</p>
+    <h1>Your Details</h1>
+    <img src="{{key.image.url}}" alt="image">
+    <p>{{key.f_name}} {{key.l_name}}</p>
+    <p>{{key.department}}</p>
+    <a href="{% url 'face-recognition' %}">Go back to the face recognition page</a>
+</body>
+</html>

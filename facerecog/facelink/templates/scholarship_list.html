@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholarship Recommender</title>
+</head>
+<style>
+    h1{
+        text-align: center;
+        color: blue;
+    }
+    button , a {
+        text-decoration: none;
+        text-align: center;
+        color:orangered;
+        padding: 1%;
+    }
+</style>
+<body>
+    <h1>Scholarship List</h1>
+    <ul>
+    {% for scholarship in scholarships %}
+        <li>
+            <h2>{{ scholarship.name }}</h2>
+            <p>Description: {{ scholarship.description }}</p>
+            <p>Eligibility Criteria: {{ scholarship.eligibility_criteria }}</p>
+            <p>Deadline: {{ scholarship.deadline }}</p>
+            <p>Yearly income(upto): {{scholarship.yearly_income}}</p>
+            <p>Specific caste: {{scholarship.S_caste}}</p>
+            {% if student %}
+                {% if student.age >= 18 and student.income <= scholarship.yearly_income and student.caste == scholarship.S_caste %}
+                    <p style="color:green;"><b>You are eligible to apply for this scholarship!</b></p>
+                {% else %}
+                    <p style="color:red;"><b>You are not eligible for this scholarship.</b></p>
+                {% endif %}
+            {% endif %}
+            <button><a href="{{scholarship.link}}">APPLY NOW..</a></button>
+        </li>
+    {% endfor %}
+    </ul>
+    <center>
+    <button><a href="second">back</a></button></center>
+</body>
+</html>

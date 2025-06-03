@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <title>student update</title>
+<style>
+    a,a:hover{
+        text-align: center;
+        text-decoration: none;
+        color:rgb(42, 4, 146);
+        size: 10cm;
+    }
+    p{
+        margin-top: 20%;
+        text-align: center;
+        color:white;
+    }
+    .mono{
+        flex:1;
+    }
+    .sono{
+        flex:14;
+        margin-top: 0;
+    }
+    .hello{
+        display:flex;
+        flex-wrap: wrap;
+    }
+    h2{
+        text-align: center;
+        color: rgb(19, 184, 206);
+    }
+    button{
+      background: violet;
+      color: rgb(32, 221, 15);
+      border: none;
+      font-size: 18px; 
+    }
+    button:hover{
+      background-color:rgb(26, 148, 179);
+      font-size:18px;
+      outline-offset: 3px;
+      text-decoration: none;
+    }
+    img:hover{
+            border:2px solid black ;
+    }
+    .card:hover{
+            box-shadow: 2px 2px rgb(169, 57, 173);
+    }
+    h1{
+        color:white;
+    }
+</style>
+</head>
+<body >
+    <nav class="navbar navbar-expand-sm navbar-dark">
+        <a class="navbar-brand" href="#"><div class="hello">
+            <div class="mono"><img src="logos/main.png" alt="facelink" style="height: 60px;width: 60px;border-radius: 50%;border:4px solid black;"></div>
+            <div class="sono"><h1 style="font-family:cursive;margin-top: 6px;">FACE-LINK</h1></div>
+            </div></a>
+        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+            aria-expanded="false" aria-label="Toggle navigation"></button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="second">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="profile">profile</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownId">
+                        <a class="dropdown-item bg-success" href="details">Add Details</a>
+                        <a class="dropdown-item bg-success" href="biodata">View Biodata</a>
+                        <a class="dropdown-item bg-success" href="scholarship_list">scholarship_list</a>
+                    </div>
+                </li>
+            </ul>
+                <a href="{% url 'exit' %}"><button class="btn btn-outline-danger my-2 my-sm-0" type="submit" >LOGOUT</button></a>
+        </div>
+    </nav>
+            <div class="card "
+                style="width:350px;height:550px;border:2px double black;margin-top: 0px;border-radius:8%;margin-bottom: 50px; margin-left: 35%; background-color: rgb(27, 28, 116);" >
+                {% for i in key %}
+                <center>
+                    <h1>PROFILE</h1>
+                <img class="card-img-top " src="{{i.image.url}}" alt="Card image"  
+                    style="height: 250px; width:250px; margin-top:30px; border-radius:50%; border:4px double rgb(3, 1, 7)">
+                </center>
+                <div class="card-body" style="border-radius:0% 0% 10% 10%;color:rgb(146, 197, 27)">
+                    <h4 class="card-title" style="text-align: center;">{{i.user_name}}</h4>
+                    <p class="card-text" style="margin: 4px;">name - {{i.f_name}} {{i.l_name}}</p>
+                    <p class="card-text" style="margin: 4px;" >email - {{i.email}}</p>
+                    <p class="card-text" style="margin: 4px;">department - {{i.department}}</p>
+                    <a href="{% url 'update' i.id %}" style="margin-left: 4px;margin-top: 4px;" class="btn btn-danger col-4"  style="margin-left: 30px;">Update</a>
+                </div></div>
+                {% endfor %}
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+</body>
+</html>

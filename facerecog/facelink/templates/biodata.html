@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biodata</title>
+    <style>
+        h1{
+            text-align: center;
+            color:rgb(202, 206, 201);
+            font-size: 40px;
+            font-family:serif;
+        }
+        img{
+            height: 250px;
+            width: 250px;
+            border-radius: 5%;
+            float: right;
+            margin-right: 120px;
+            border: solid black;
+        }
+        p{
+            margin-left: 6%;
+            font-size:23px ;
+        }
+        h2{
+            margin-left: 6%;
+            text-transform: uppercase;
+            font-size: 40px;
+        }
+        body{
+            background:linear-gradient(to left, green ,gold);
+        }
+        #biodata-content{
+            border: solid black;
+            margin-top:1% ;
+            margin-bottom:1% ;
+            margin-left:10% ;
+            margin-right:10% ;
+        }
+        #download-btn,a{
+            font-size: 20px;
+            border: solid white;
+            text-decoration: none;
+            background:blue;
+            text-transform: uppercase;
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    <div id="biodata-content">
+            <h1>Biodata</h1>
+            <img src="{{stdsign.image.url}}" alt="user image">
+            <h2>{{ stdsign.f_name }} {{ stdsign.l_name }}</h6>
+            <p><strong>Department:</strong> {{ stdsign.department }}</p>
+            <p><strong>Email:</strong> {{ stdsign.email }}</p>
+            <p><strong>Admission Number:</strong> {{ stddet.adm_no }}</p>
+            <p><strong>Date of Birth:</strong> {{ stddet.dob }}</p>
+            <p><strong>Father's Name:</strong> {{ stddet.father }}</p>
+            <p><strong>Mother's Name:</strong> {{ stddet.mother }}</p>
+            <p><strong>Number:</strong> {{ stddet.number }}</p>
+            <p><strong>Gender:</strong> {{ stddet.gender }}</p>
+            <p><strong>Age:</strong> {{ stddet.age }}</p>
+            <p><strong>Income:</strong> {{ stddet.income }}</p>
+            <p><strong>Religion:</strong> {{ stddet.religion }}</p>
+            <p><strong>Caste:</strong> {{ stddet.caste }}</p>
+            <p><strong>Blood Group:</strong> <n style="text-transform: uppercase;"> {{ stddet.bloodgroup }}</n></p>
+            <p><strong>Address:</strong> {{ stddet.address }}</p>
+            <p><strong>District:</strong> {{ stddet.district }}</p>
+            <p><strong>State:</strong> {{ stddet.state }}</p>
+            <p><strong>Preferred Language:</strong> {{ stddet.lang }}</p>
+            <p><strong>Nationality:</strong> {{ stddet.nation }}</p>
+    </div>
+    <center>
+    <button id="download-btn"> <a href="{% url 'generate_pdf' %}">Go for Download</a></button></center>
+</body>
+</html>

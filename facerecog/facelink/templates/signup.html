@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+	<link rel="stylesheet" href="{% static 'signup.css' %}">
+</head>
+<body>
+    <div class="main">  	
+		<input type="checkbox" id="chk" aria-hidden="true">
+
+			<div class="signup">
+				<form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+					<label for="chk" aria-hidden="true">Sign up</label>
+					<input type="text"class="bass" name="f_name" placeholder="first_name" required="">
+                    <input type="text"class="bass" name="l_name" placeholder="last_name" required="">
+					<input type="text"class="bass" name="username" placeholder="user_name" required="">
+                    <select name="department" id="department" >
+						<option value="">Choose Department</option>
+						<option value="CT">Computer Engineering</option>
+						<option value="CHE">Computer Hardware Engineering</option>
+						<option value="ELS">Electronic Engineering</option>
+					</select>
+					<input type="file" name="image" value="picture">
+					<input type="email"  name="email" placeholder="Email" required="">
+					<input type="password" name="password" placeholder="password" required="">
+					<input type="password" name="c-password" placeholder="confirm password" required="">
+					<b>{{key}}</b>
+					<button>Submit</button>
+				</form>
+				<button><a href="login">login</a></button>
+				<a href="/" style="text-decoration: none;color: rgb(30, 209, 14);font-size: 18px;margin-left: 33%;">HOME PAGE</a>
+			</div>
+	</div>
+</body>
+</html>

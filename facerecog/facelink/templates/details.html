@@ -1,0 +1,199 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{% static 'modern.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'dist.css' %}">
+    <title>details student</title>
+    <style>
+        a{
+            position: relative;
+            display: inline-block;
+            outline-color: blue;
+            font-size: 18px;
+            text-decoration:dotted;
+            text-transform: uppercase;
+            overflow: hidden;
+            margin-top: 2px;
+            margin-bottom: 4px;
+            letter-spacing: 4px;
+        }
+    </style>
+</head>
+<body>
+<h1 id="title">Bio Data Form</h1>
+<div id="form-outer">
+  <p id="description">
+    To know the details of students
+  </p>
+  <form id="survey-form" method="post" action="">
+    {% csrf_token %}
+    <div class="rowTab">
+        <div class="labels">
+          <label id="admission-label" for="name">Admission number: </label>
+        </div>
+        <div class="rightTab">
+          <input autofocus type="text" name="adm_num" class="input-field" placeholder="Enter your admission number" required>
+        </div>
+    </div>
+
+    <div class="rowTab">
+        <div class="labels">
+          <label id="dob-label" for="dob">Date of Birth: </label>
+        </div>
+        <div class="rightTab">
+          <input type="date" name="dob" id="iddob" class="input-field" required>
+        </div>
+    </div>
+    
+    <div class="rowTab">
+      <div class="labels">
+        <label id="fname-label" for="fname">Father's Name: </label>
+      </div>
+      <div class="rightTab">
+        <input autofocus type="text" name="father"  class="input-field" placeholder="Enter your father's name" required>
+      </div>
+    </div>
+    
+    <div class="rowTab">
+      <div class="labels">
+        <label id="mname-label" for="mname">Mother's Name: </label>
+      </div>
+      <div class="rightTab">
+        <input autofocus type="text" name="mother" class="input-field" placeholder="Enter your mother's name" required>
+      </div>
+    </div>
+    
+    <div class="rowTab">
+      <div class="labels">
+        <label id="number" for="num">Number: </label>
+      </div>
+      <div class="rightTab">
+        <input type="tel" name="number" class="input-field" required placeholder="Enter your Mobile number">
+      </div>
+    </div>
+
+    <div class="rowTab">
+        <div class="labels">
+          <label for="gender">Gender: </label>
+        </div>
+        <div class="rightTab">
+          <select id="dropdown" name="gender" class="dropdown">
+          <option disabled value>Select an option</option>
+          <option value="male">MALE</option>
+          <option value="fe-male">FE-MALE</option>
+          <option value="transgender">TRANSGENDER</option>
+          <option value="others">others</option>
+          </select>
+        </div>
+      </div>
+
+    <div class="rowTab">
+      <div class="labels">
+        <label id="age-label" for="age">Age: </label>
+      </div>
+      <div class="rightTab">
+        <input type="number" name="age"  min="1" max="50" class="input-field" placeholder="Age" required>
+      </div>
+    </div>
+    
+    <div class="rowTab">
+        <div class="labels">
+          <label id="income" for="income">Income: </label>
+        </div>
+        <div class="rightTab">
+          <input type="number" name="income" class="input-field" required placeholder="Enter your yearly income">
+        </div>
+    </div>
+
+    <div class="rowTab">
+        <div class="labels">
+          <label for="religion">Religion: </label>
+        </div>
+        <div class="rightTab">
+          <ul style="list-style: none;">
+            <li class="radio"><label><input name="radio-buttons" value="hindu"  type="radio" class="userRatings" >Hindu</label></li>
+            <li class="radio"><label><input name="radio-buttons" value="muslim"  type="radio" class="userRatings" >Muslim</label></li>
+            <li class="radio"><label><input name="radio-buttons" value="christian"  type="radio" class="userRatings" >Christian</label></li>
+            <li class="radio"><label><input name="radio-buttons" value="other"  type="radio" class="userRatings" >Others</label></li>
+          </ul>
+        </div>
+    </div>
+
+    <div class="rowTab">
+        <div class="labels">
+          <label id="caste-label" for="caste">Caste: </label>
+        </div>
+        <div class="rightTab">
+          <input autofocus type="text" name="caste" class="input-field" placeholder="Enter your caste" required>
+        </div>
+    </div>
+
+    <div class="rowTab">
+        <div class="labels">
+          <label id="bgroup-label" for="bgroup">Blood Group: </label>
+        </div>
+        <div class="rightTab">
+          <input autofocus type="text" name="bgroup" class="input-field" placeholder="Enter your Blood group" required>
+        </div>
+    </div>
+
+    <div class="rowTab">
+      <div class="labels">
+        <label for="address">Address: </label>
+      </div>
+      <div class="rightTab">
+        <textarea id="comments" class="input-field" style="height:50px;resize:vertical;" name="address" placeholder="Enter your address here..."></textarea>
+      </div>
+    </div>
+
+    <div class="rowTab">
+        <div class="labels">
+          <label id="district" for="district">District: </label>
+        </div>
+        <div class="rightTab">
+          <input autofocus type="text" name="district" class="input-field" placeholder="Enter your district" required>
+        </div>
+    </div>
+
+    <div class="rowTab">
+        <div class="labels">
+          <label id="state" for="state">State: </label>
+        </div>
+        <div class="rightTab">
+          <input autofocus type="text" name="state" class="input-field" placeholder="Enter your state" required>
+        </div>
+    </div>
+
+    <div class="rowTab">
+      <div class="labels">
+        <label for="lang">Language: </label>
+      </div>
+      <div class="rightTab">
+        <ul style="list-style: none;">
+          <li class="radio"><label><input name="prefer" value="malayalam"  type="radio" class="userRatings" >Malayalam</label></li>
+          <li class="radio"><label><input name="prefer" value="Hindi"  type="radio" class="userRatings" >Hindi</label></li>
+          <li class="radio"><label><input name="prefer" value="English"  type="radio" class="userRatings" >English</label></li>
+          <li class="radio"><label><input name="prefer" value="other"  type="radio" class="userRatings" >Others</label></li>
+        </ul>
+      </div>
+  </div>
+   
+
+    <div class="rowTab">
+        <div class="labels">
+          <label id="nation" for="country">Nationality: </label>
+        </div>
+        <div class="rightTab">
+          <input autofocus type="text" name="nation" class="input-field" placeholder="Nationality(first letter capital)" required>
+        </div>
+      </div>
+    <button id="submit" type="submit">Submit</button>
+    <button id="reset" type="reset">Reset</button>
+  </form>
+  <button><a href="second">Main Page</a></button>
+</div>
+</body>
+</html>

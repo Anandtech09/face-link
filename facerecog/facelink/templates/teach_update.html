@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>update</title>
+    <style>
+    html {
+      height: 100%;
+    }
+    body {
+      margin:0;
+      padding:0;
+      font-family: sans-serif;
+      background:linear-gradient(to bottom, #da9008, #d6b915, #c1ce0f);
+      background-repeat:repeat-y;
+      background-size:1420px 700px;
+    }
+    
+    .login-box {
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      width: 400px;
+      padding: 40px;
+      transform: translate(-50%, -50%);
+      background:transparent;
+      box-sizing: border-box;
+      box-shadow: 5px 20px 50px rgb(37, 10, 194);
+      border-radius: 30px;
+    }
+    
+    .login-box h2 {
+      margin: 0 0 30px;
+      padding: 0;
+      color:rgb(2, 11, 27);
+      text-align: center;
+      font-weight: bolder;
+    }
+    
+    .login-box .user-box {
+      position: relative;
+    }
+    
+    .login-box .user-box input {
+      width: 100%;
+      padding: 10px 0;
+      font-size: 16px;
+      color: #cf2121;
+      margin-bottom: 20px;
+      border: none;
+      border-bottom: 1px solid rgb(248, 11, 11);
+      outline: none;
+      background: transparent;
+    }
+    .login-box .user-box label {
+      position: absolute;
+      top:0;
+      left: 0;
+      padding: 10px 0;
+      font-size: 20px;
+      color:rgb(5, 4, 12);
+    
+    }
+    
+    
+    .login-box form a {
+      position: relative;
+      display: inline-block;
+      padding: 10px 20px;
+      color: rgb(218, 231, 220);
+      font-size: 16px;
+      text-decoration:dotted;
+      text-transform: uppercase;
+      overflow: hidden;
+      transition: .5s;
+      margin-top: 40px;
+      letter-spacing: 4px
+    }
+    
+    .login-box a:hover {
+      background: yellowgreen;
+      color: #fff;
+      border-radius: 5px;
+    }
+    .login-box:hover{
+        box-shadow: 8px 8px 8px rgb(122, 6, 117);
+    }
+    input[type=submit]{
+        background: transparent;
+        color: rgb(42, 4, 112);
+        border: none;
+        font-size: 18px;
+        margin-left: 40%;
+        padding: 2%;
+        
+    }
+    input[type=submit]:hover{
+        background-color:rgb(6, 121, 111);
+        font-size:18px;
+        outline-offset: 8px;
+        border-radius: 10%;
+    }
+    </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>UPDATE</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="user-box">
+        <label for="">Name</label><br><br>
+        <input type="text" name="uf_name" value="{{key.name}}">
+        </div>
+        <div class="user-box">
+        <label for="">User name</label><br><br>
+        <input type="text" name="ul_name" value="{{key.user_name}}">
+        </div>
+        <div class="user-box">
+        <label for="">Department[CT/CHE/ELS]</label><br><br>
+        <input type="text" name="u_dep" value="{{key.department}}">
+        </div>
+        <div class="user-box">
+        <label for="">Email</label><br><br>
+        <input type="email" name="u_email" value="{{key.email}}">
+        </div>
+        <div class="user-box">
+        <label for="">Phone number</label><br><br>
+        <input type="number" name="u_num" value="{{key.number}}">
+        </div>
+        <div class="user-box">
+        <label for="">Password</label><br><br>
+        <input type="password" name="u_pass" value="{{key.password}}">
+        </div>
+        <input type="submit" value="SUBMIT">
+        <a href="twoprofile" style="margin-top: 2%;margin-left: 24%;">PROFILE VIEW</a>
+    </form>
+  </div>
+</body>
+</html>
